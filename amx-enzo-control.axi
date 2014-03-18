@@ -36,5 +36,22 @@ define_function enzoAlertClose(dev enzo)
 	sendCommand(enzo, ENZO_COMMAND_ALERT_CLOSE);
 }
 
+define_function enzoBlankingShow(dev enzo, char useLogo)
+{
+	if (useLogo == true)
+	{
+		sendCommand(enzo, ENZO_COMMAND_BLANK_LOGO);
+	}
+	else
+	{
+		sendCommand(enzo, ENZO_COMMAND_BLANK);
+	}
+}
+
+define_function enzoBlankingHide(dev enzo)
+{
+	sendCommand(enzo, ENZO_COMMAND_BLANK_CLOSE);
+}
+
 
 #end_if
