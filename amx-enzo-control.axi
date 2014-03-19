@@ -9,11 +9,21 @@ program_name='amx-enzo-control'
 #include 'amx-device-control';
 
 
+define_function enzoSessionStart(dev enzo)
+{
+	sendCommand(enzo, ENZO_COMMAND_START);
+}
+
+define_function enzoSessionEnd(dev enzo)
+{
+	sendCommand(enzo, ENZO_COMMAND_EXIT);
+}
+
 define_function enzoAlert(dev enzo, char message[], char type[], char title[],
 		char isModal, integer timeout)
 {
 	stack_var char cmd[DUET_MAX_CMD_LEN];
-	
+
 	cmd = DuetPackCmdHeader(ENZO_COMMAND_ALERT);
 	cmd = DuetPackCmdParam(cmd, message);
 	cmd = DuetPackCmdParam(cmd, type);
@@ -27,7 +37,7 @@ define_function enzoAlert(dev enzo, char message[], char type[], char title[],
 		cmd = DuetPackCmdParam(cmd, 'false');
 	}
 	cmd = DuetPackCmdParam(cmd, itoa(timeout));
-	
+
 	sendCommand(enzo, cmd);
 }
 
