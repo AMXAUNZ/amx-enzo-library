@@ -63,5 +63,20 @@ define_function enzoBlankingHide(dev enzo)
 	sendCommand(enzo, ENZO_COMMAND_BLANK_CLOSE);
 }
 
+define_function enzoShowWebApp(dev enzo, char address[])
+{
+	stack_var char cmd[DUET_MAX_CMD_LEN];
+
+	cmd = DuetPackCmdHeader(ENZO_COMMAND_WEB);
+	cmd = DuetPackCmdParam(cmd, address);
+
+	sendCommand(enzo, cmd);
+}
+
+define_function enzoHideWebApp(dev enzo)
+{
+	sendCommand(enzo, ENZO_COMMAND_WEB_CLOSE);
+}
+
 
 #end_if
