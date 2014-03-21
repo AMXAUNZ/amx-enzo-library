@@ -126,5 +126,10 @@ define_function enzoRequestContentItems(dev enzo, integer startIndex,
 	sendCommand(enzo, cmd);
 }
 
+define_function enzoHome(dev enzo)
+{
+	sendCommand(enzo, ENZO_COMMAND_HOME);
+}
+
 
 #end_if

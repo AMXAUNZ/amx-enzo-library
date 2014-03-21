@@ -178,6 +178,7 @@ char ENZO_ALERT_TYPE_CRITICAL[]						= 'critical';
  * --------------------
  */
 char ENZO_CONTENT_TYPE_DIRECTORY[]					= 'directory';
+char ENZO_CONTENT_TYPE_PARENT[]						= 'parent';
 char ENZO_CONTENT_TYPE_UNKNOWN[]					= 'unknown';
 
 /*

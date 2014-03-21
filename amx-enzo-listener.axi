@@ -101,6 +101,15 @@ define_function enzoNotifyContentPathChanged(dev enzo, char sourceId[], char pat
 	// path is the new API cursor point 
 }
 
+#define INCLUDE_ENZO_NOTIFY_CONTENT_OPEN_ERROR
+define_function enzoNotifyContentContentOpenError(dev enzo, char message[256],
+		char path[256])
+{
+	// enzo is the enzo device
+	// message is the contents of the resturned message
+	// path is the path to the file which generated the error
+}
+
 
 */
 
@@ -173,6 +182,13 @@ data_event[dvEnzoDevices]
 			case ENZO_COMMAND_CONTENT_PATH_RESPONSE:
 			{
 				enzoNotifyContentPathChanged(data.device, params[1], params[2]);
+			}
+			#end_if
+			
+			#if_defined INCLUDE_ENZO_NOTIFY_CONTENT_OPEN_ERROR
+			case ENZO_COMMAND_CONTENT_OPEN_ERROR:
+			{
+				enzoNotifyContentContentOpenError(data.device, params[1], params[2]);
 			}
 			#end_if
 
