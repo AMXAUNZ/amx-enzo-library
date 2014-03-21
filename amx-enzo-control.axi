@@ -78,5 +78,10 @@ define_function enzoHideWebApp(dev enzo)
 	sendCommand(enzo, ENZO_COMMAND_WEB_CLOSE);
 }
 
+define_function enzoRequestContentSources(dev enzo)
+{
+	sendCommand(enzo, ENZO_COMMAND_CONTENT_SOURCES_REQUEST);
+}
+
 
 #end_if
