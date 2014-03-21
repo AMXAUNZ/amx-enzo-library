@@ -67,6 +67,41 @@ define_function enzoNotifyContentError(dev enzo, char errorMessage[])
 	// errorMessage is the message returned from the device
 }
 
+#define INCLUDE_ENZO_NOTIFY_CONTENT_ITEMS_RECORD_COUNT
+define_function enzoNotifyContentItemsRecordCount(dev enzo,
+		integer relativeCount, integer absoluteCount)
+{
+	// enzo is the enzo device
+	// relativeCount is the number of items counted from the passed index
+	// absoluteCount is the total number of items
+}
+
+#define INCLUDE_ENZO_NOTIFY_CONTENT_ITEMS_RECORD
+define_function enzoNotifyContentItemsRecord(dev enzo, integer relativeIndex,
+		integer absoluteIndex, char sourceId[], char path[], char name[],
+		char type[], long size, char lastModified[], char readOnly)
+{
+	// enzo is the enzo device
+	// relativeIndex is the relative index from the passed query start index
+	// absoluteIndex is the absolute source index
+	// sourceId is the key for the content source containing the item
+	// path is the path to the content item to use in the API
+	// name is the human readable source name
+	// type is the file / item type
+	// size is the file size in bytes
+	// lastModified is the files last modified date as a string
+	// readOnly is a boolean value representable the file access restrictions
+}
+
+#define INCLUDE_ENZO_NOTIFY_CONTENT_PATH_CHANGED
+define_function enzoNotifyContentPathChanged(dev enzo, char sourceId[], char path[])
+{
+	// enzo is the enzo device
+	// sourceId is the key for the content source containing the item
+	// path is the new API cursor point 
+}
+
+
 */
 
 
@@ -77,7 +112,7 @@ data_event[dvEnzoDevices]
 	command:
 	{
 		stack_var char cmd[256];
-		stack_var char params[8][128];
+		stack_var char params[10][128];
 
 		cmd = string_get_key(data.text, '-');
 		explode(',', string_get_value(data.text, '-'), params, 0);
@@ -113,6 +148,31 @@ data_event[dvEnzoDevices]
 			case ENZO_COMMAND_CONTENT_ERROR:
 			{
 				enzoNotifyContentError(data.device, params[1]);
+			}
+			#end_if
+			
+			#if_defined INCLUDE_ENZO_NOTIFY_CONTENT_ITEMS_RECORD_COUNT
+			case ENZO_COMMAND_CONTENT_ITEMS_DETAIL_COUNT:
+			{
+				enzoNotifyContentItemsRecordCount(data.device, atoi(params[1]),
+						atoi(params[2]));
+			}
+			#end_if
+			
+			#if_defined INCLUDE_ENZO_NOTIFY_CONTENT_ITEMS_RECORD
+			case ENZO_COMMAND_CONTENT_ITEMS_DETAIL_RESPONSE:
+			{
+				enzoNotifyContentItemsRecord(data.device, atoi(params[1]),
+						atoi(params[2]), params[3], params[4], params[5],
+						params[6], atoi(params[7]), params[8],
+						string_to_bool(params[9]));
+			}
+			#end_if
+			
+			#if_defined INCLUDE_ENZO_NOTIFY_CONTENT_PATH_CHANGED
+			case ENZO_COMMAND_CONTENT_PATH_RESPONSE:
+			{
+				enzoNotifyContentPathChanged(data.device, params[1], params[2]);
 			}
 			#end_if
 

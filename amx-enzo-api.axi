@@ -77,6 +77,7 @@ char ENZO_COMMAND_CONTENT_ITEM_DETAIL_REQUEST[]		= '?CONTENT.ITEM';
 char ENZO_COMMAND_CONTENT_ITEM_DETAIL_RESPONSE[]	= 'CONTENT.ITEM';
 char ENZO_COMMAND_CONTENT_ITEM_DETAIL_ERROR[]		= 'CONTENT.ITEM.ERROR';
 char ENZO_COMMAND_CONTENT_ITEMS_DETAIL_REQUEST[]	= '?CONTENT.ITEMS';
+char ENZO_COMMAND_CONTENT_ITEMS_DETAIL_COUNT[]		= 'CONTENT.ITEMS.RECORD.COUNT';
 char ENZO_COMMAND_CONTENT_ITEMS_DETAIL_RESPONSE[]	= 'CONTENT.ITEMS.RECORD';
 char ENZO_COMMAND_CONTENT_ITEMS_DETAIL_ERROR[]		= 'CONTENT.ITEMS.ERROR';
 char ENZO_COMMAND_CONTENT_ITEMS_COUNT_REQUEST[]		= '?CONTENT.ITEMS.COUNT';
@@ -171,5 +172,20 @@ char ENZO_ALERT_TYPE_QUESTION[]						= 'question';
 char ENZO_ALERT_TYPE_SECURITY[]						= 'security';
 char ENZO_ALERT_TYPE_CRITICAL[]						= 'critical';
 
+/*
+ * --------------------
+ * Content types
+ * --------------------
+ */
+char ENZO_CONTENT_TYPE_DIRECTORY[]					= 'directory';
+char ENZO_CONTENT_TYPE_UNKNOWN[]					= 'unknown';
+
+/*
+ * --------------------
+ * Special content path
+ * --------------------
+ */
+char ENZO_CONTENT_PATH_UP[]							= '{UP}';
+char ENZO_CONTENT_PATH_ROOT[]						= '{ROOT}';
 
 #end_if

@@ -83,5 +83,48 @@ define_function enzoRequestContentSources(dev enzo)
 	sendCommand(enzo, ENZO_COMMAND_CONTENT_SOURCES_REQUEST);
 }
 
+define_function enzoSetContentSource(dev enzo, char source[])
+{
+	stack_var char cmd[DUET_MAX_CMD_LEN];
+
+	cmd = DuetPackCmdHeader(ENZO_COMMAND_CONTENT_SOURCE_SET);
+	cmd = DuetPackCmdParam(cmd, source);
+
+	sendCommand(enzo, cmd);
+}
+
+define_function enzoSetContentPath(dev enzo, char path[])
+{
+	stack_var char cmd[DUET_MAX_CMD_LEN];
+
+	cmd = DuetPackCmdHeader(ENZO_COMMAND_CONTENT_PATH_SET);
+	cmd = DuetPackCmdParam(cmd, path);
+
+	sendCommand(enzo, cmd);
+}
+
+define_function enzoContentOpen(dev enzo, char path[])
+{
+	stack_var char cmd[DUET_MAX_CMD_LEN];
+
+	cmd = DuetPackCmdHeader(ENZO_COMMAND_CONTENT_OPEN);
+	cmd = DuetPackCmdParam(cmd, path);
+
+	sendCommand(enzo, cmd);
+}
+
+define_function enzoRequestContentItems(dev enzo, integer startIndex,
+		integer maxRecords, char excludeSpecialItems)
+{
+	stack_var char cmd[DUET_MAX_CMD_LEN];
+
+	cmd = DuetPackCmdHeader(ENZO_COMMAND_CONTENT_ITEMS_DETAIL_REQUEST);
+	cmd = DuetPackCmdParam(cmd, itoa(startIndex));
+	cmd = DuetPackCmdParam(cmd, itoa(maxRecords));
+	cmd = DuetPackCmdParam(cmd, bool_to_string(excludeSpecialItems));
+
+	sendCommand(enzo, cmd);
+}
+
 
 #end_if
