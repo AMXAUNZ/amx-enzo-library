@@ -188,5 +188,7 @@ char ENZO_CONTENT_TYPE_UNKNOWN[]					= 'unknown';
  */
 char ENZO_CONTENT_PATH_UP[]							= '{UP}';
 char ENZO_CONTENT_PATH_ROOT[]						= '{ROOT}';
+char ENZO_CONTENT_PATH_REFRESH[]					= '{REFRESH}';
+char ENZO_CONTENT_PATH_SEARCH_CLEAR[]				= '{SEARCH.CLEAR}';
 
 #end_if
