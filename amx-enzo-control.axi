@@ -121,15 +121,141 @@ define_function enzoRequestContentItems(dev enzo, integer startIndex,
 	cmd = DuetPackCmdHeader(ENZO_COMMAND_CONTENT_ITEMS_DETAIL_REQUEST);
 	cmd = DuetPackCmdParam(cmd, itoa(startIndex));
 	cmd = DuetPackCmdParam(cmd, itoa(maxRecords));
-	cmd = DuetPackCmdParam(cmd, bool_to_string(excludeSpecialItems));
+	switch (excludeSpecialItems)
+	{
+		case TRUE:    cmd = DuetPackCmdParam(cmd, 'true');
+		case FALSE:   cmd = DuetPackCmdParam(cmd, 'false');
+	}
 
 	sendCommand(enzo, cmd);
 }
 
-define_function enzoHome(dev enzo)
+
+
+
+
+
+define_function enzoUp (dev enzo)
 {
-	sendCommand(enzo, ENZO_COMMAND_HOME);
+	sendCommand (enzo, ENZO_COMMAND_UP)
+}
+
+define_function enzoDown (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_DOWN)
+}
+
+define_function enzoLeft (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_LEFT)
+}
+
+define_function enzoRight (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_RIGHT)
+}
+
+define_function enzoBack (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_BACK)
+}
+
+define_function enzoHome (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_HOME)
+}
+
+define_function enzoEnter (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_ENTER)
+}
+
+define_function enzoPageDown (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_PAGE_DOWN)
+}
+
+define_function enzoPageUp (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_PAGE_UP)
+}
+
+define_function enzoKeystrokes (dev enzo, char keystrokes[])
+{
+	sendCommand (enzo, "ENZO_COMMAND_KEY,'-',keystrokes")
+}
+
+define_function enzoFfwd (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_FFWD)
+}
+
+define_function enzoPause (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_PAUSE)
+}
+
+define_function enzoPlay (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_PLAY)
+}
+
+define_function enzoRewind (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_REWIND)
+}
+
+define_function enzoStop (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_STOP)
+}
+
+define_function enzoPrevious (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_PREVIOUS)
+}
+
+define_function enzoNext (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_NEXT)
+}
+
+define_function enzoRequestPasscode (dev enzo)
+{
+	sendCommand (enzo, ENZO_COMMAND_PASSCODE_REQUEST)
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #end_if
+
