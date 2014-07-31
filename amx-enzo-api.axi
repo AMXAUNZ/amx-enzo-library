@@ -163,6 +163,14 @@ char ENZO_COMMAND_WEB_CLOSE[] = 'WEB.CLOSE';
 
 /*
  * --------------------
+ * MirrorOp commands
+ * --------------------
+ */
+
+char ENZO_COMMAND_PASSCODE_REQUEST[] = '?PASSCODE'
+
+/*
+ * --------------------
  * Alert types
  * --------------------
  */
