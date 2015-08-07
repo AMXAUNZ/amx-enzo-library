@@ -1,4 +1,4 @@
-PROGRAM_NAME='amx-enoz-api'
+PROGRAM_NAME='amx-enzo-api'
 
 #if_not_defined __AMX_ENZO_API__
 #define __AMX_ENZO_API__
